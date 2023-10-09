@@ -1,0 +1,9 @@
+sudo: required
+service:
+  - docker
+
+before_install: 
+  - docker build -t kuberrj/docker-react -f Dockerfile.dev .
+  
+script: 
+  - docker run -e CI=true kuberrj/docker-react npm run test
